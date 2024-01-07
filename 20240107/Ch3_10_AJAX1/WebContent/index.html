@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="BIG5">
+<title>Insert title here</title>
+
+<script>
+		function loginFunction(){
+			console.log("test!");
+			let accValue = document.getElementById('accId').value;
+			let pwdValue = document.getElementById('pwdId').value;
+			let msg = document.getElementById('msg');
+			console.log(accValue,pwdValue);
+			let url = `login?acc=${accValue}&pwd=${pwdValue}`;
+			console.log(url);
+			fetch(url,{method:'get'}).
+			then(resp=>{return resp.text();}).
+			then(text=>{msg.innerText = text;})
+		}
+
+</script>
+</head>
+<body>
+	<form action="login">
+		<input name="acc" id="accId" />
+		<input name="pwd" type="password" id="pwdId"/>
+		<button type="button" onclick="loginFunction()">確定</button>
+	</form>
+	<div id="msg"></div>
+</body>
+</html>
